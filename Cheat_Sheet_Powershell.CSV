@@ -1,0 +1,20 @@
+;;;;;Powershell Cheat Sheet;;;
+;;;;;;;;
+Frage:;;;;;;Befehl:;;"Ordner: Copy-Item""C:\Test\Test.txt"" - Destination ""C:\AndererOrdner\"""
+;;;;;;;;"Datei: Copy-Item""C:\Test\*"" - Destination ""C:\AndererOrdner\"""
+"1.	Wie kopiert man Ordner und Dateien? ";;;;;;Copy-Item ;;Copy-Item -Path C:\Temp\tempdoc.docx -Destination C:\Archives\      -> Datei koppieren
+;;;;;;;;Copy-Item -Path C:\Temp\bilder -Destination C:\Archives\                       -> Ordner ohne Inhalt
+;;;;;;;;
+"2.	Wie löscht man Ordner und Dateien? ";;;;;;Remove-item;;Ordner: Remove-Item -Path C:\\Articles\\Folders1
+;;;;;;;;Datei: Remove-Item -Path Test.txt
+;;;;;;;;
+"3.	Wie benennt man Ordner und Dateien um? ";;;;;;Rename-item;;"Datei: Rename-Item -Path ""C:\Test\Test.txt"" -NewName ""Anderer_name.txt"""
+;;;;;;;;"Ordner: Rename-Item ""C\Test"" >> Input abfrage für neuen namen"
+;;;;;;;;
+4.Wie kann man sich den Inhalt von Dateien anzeigen lassen? ;;;;;;Get-Content;;Get-Content-Path.\Test.txt
+;;;;;;;;
+;;;;;;;;
+5. Wie prüft man, ob eine Datei existiert? ;;;;;;Test-Path;;Test-Patg -Path C:Test\Test.txt
+;;;;;;;;
+;;;;;;;;
+6. Eine Datei verschieben;;;;;;Move-Item;;

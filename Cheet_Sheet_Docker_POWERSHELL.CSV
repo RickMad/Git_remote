@@ -1,0 +1,111 @@
+;;POWERSHELL CHEAT SHEET;;
+;;;;
+Kommando;Beschreibung;Ausprägung;Beispiele;Zusatz Infos
+man;"Zeigt die Hilfedatei zu 
+dem Programm an";- k Schlüsselwort: zur Suche von Hilfeseiten mit bestimmten Schlüsselwort;man -k hilfe;
+;;-f Thema: Kurzinfo zum gewählten Thema;man -f cp;
+;;"-t > ausgabe.ps: Erzeugt eine schön 
+formatiertes Postscript-Dokument des Thema";man cp -t > cp_man.ps;
+;;;;
+;;;;
+;;;;
+;;;;
+cd;Verzeichnis wechseln;"cd/ zu root gehen
+cd.. Ein Schritt zurück
+cd/pfad/pfad";cd /var/www;Wechselt zum Verzeichnis /var/www
+;;;cd ..;Wechselt in das Verzeichnis unter dem aktuellen Verzeichnis.
+;;;cd ../..;Wechselt das verzeichnis zwei ebenen unter dem aktuellen Verzeichnis
+ls;list directory contents;"""-a"" steht für all und zeigt auch dateien die mit einem ""."" Beginnen";ls;Zeigt den inhalt des aktuellen verzeichnisses in kurzform an
+;;"""-h"" steht für human-readable, hier werden die größenangaben in Menschlich lesbarer";ls -la;"Zeigt den inhalt des aktuellen verzeichnisses in langform (-l) inl. Der versteckten dateien (-a) die mit ""."" beginnen an"
+;;form dargestellt (z.B. 1k, 234m, 2g, etc;;
+;;"""-l"" steht für ""long listing format"" hier wird der inhalt des verzeichnisses mit jeder menge angaben, zeile für zeile";ls -la /var/www;"zeigt den Inhalt in Langform (-l) mit versteckten dateien (-a) des ordners ""/var/www"" an unabhängig davon wo man sich gerade befindet"
+;;;;
+pwd;print working directory;"pwd ""-l"" Symbolischen Link drucken. (Verknüpfungstypen werden angezeigt)";;
+;;"pwd ""-p"" Den tatsächlichen link drucken (Verschachtelte Verzeichnis)";;
+;;pwd zeigt das aktuelle Arbeitsverzeichnis;;
+;;;;
+mkdir;make directorys;"mkdir ""-p"" Steht für ""parents"". Hier können übergeordnete Ordner mit angelegt werden, z.B. ganze Ordnerstrukturen";mkdir MeinOrdner;"Erstellt den Ordner ""Mein Ordner"" im aktuellen Arbeitsverzeichnis."
+;;"mkdir ""-v"" Steht für ""verbose"" und zeigt alles an was der Befehl ""mkdir"" gerade macht.";mkdir MeinOrdner1 MeinOrdner2;"Erstellt die beiden Ordner ""MeinOrdner1"" und ""MeinOrdner2"" im aktuellen Arbeitsverzeichnis."
+;;;mkdir -p Ordner/{A11,A12}/{AU1,AU2};Erstellt Ordner A11 & A12 jeweils mit den Unterordnern AU1 & AU2
+touch;Datei erstellen, Zeitstempel ändern;"""-a"" modifikation des Zugriffszeitstempels der Datei";;
+;;"""-c"" (Wenn keine datei vorhanden ist:) Keine Datei erstellen";;
+;;"""-d"" Verwendung von Datum oder STRING statt der augenblicklichen zeit.";touch datei.txt;Alle Zeitstempel werden auf die gegenwärtige Zeit geändert.
+;;"""-t"" zeitstempel Verwendung von [JJ]MMTTHHMM[.ss] statt der augenblicklichen zeit";touch -t 0912311627 datei.txt;Alle Zugriff- und Änderungszeitstempel auf den 31. Dezember 2009, 16:27 Uhr geändert
+;;;;
+rm;remove file;"""-i"" Steht für interactive. Fragt bei jedem Löschvorgang ob die Datei wirklich gelöscht werden soll, dies muss dann mit der Taste ";rm meinedatei.txt;"Löscht die Datei ""meinedatei.txt"" im aktuellen Arbeitsverzeichnis"
+;;"""y"" bestätigt werden.";rm -r /tmp;Löscht das Verzeichnis /tmp inkl. Aller Dateien und Unterordner (rekursiv)
+;;"""-r"" Steht für ""recursive"". Hier werden alle Dateien und Ordner rekursiv vom angegebenen Pfad gelöscht.";rm -rv /tmp;Löscht das Verzeichnis /tmp inkl. Aller dateien und Unterordner (rekursiv)
+;;"""-v"" Steht für ""verbose"" und Zeigt alles an was der Befehl rm gerade macht.";;
+;;;;
+rmdir;Remove empty directorys;"""-v"" steht für verbose und zeigt alles an was der Befehl rmdir gerade macht.";rmdir /temp/test;"Löscht den Ordner ""Test"" aus dem Verzeichnis ""/tmp"""
+;;;;
+mv;move (rename) files;"""-v"" steht für ""verbose"" und zeigt alles an was der Befehl mv gerade macht.";mv /home/user/test.txt /tmp/;"verschiebt die Datei ""test.txt"" von ""/home/user/"" nach ""/tmp/"""
+;;mv Datei1 Verzeichnis1/Verzeichnis2/Datei2 verschieben und umbenennen / mv Test.txt.html ändert die Endung txt zu html;mv test.txt test2.txt;Die Datei test.txt wird in test2.txt umbenannt, dies funktioniert genau so auch mit Verzeichnissen.
+;;;mv /home/user /tmp/;"verschiebt den Ordner ""user"" aus dem Verzeichnis ""home/ nach ""/tmp/""."
+cp;copy files and directorys;"""-a"" Steht für ""archive"". Mit diesem Schalter werden Zeitstempel, Besitzer, Gruppen, Dateirechte wie von der Quelle beibehalten";cp /home/user/test.txt /tmp/;"Kopiert die Datei ""test.txt"" aus /home/user/ nach /tmp."
+;;"""-r"" steht für ""rekursiv"". Mit diesem Schalter werden alle Ordner und Unterordner inkl. Dateien kopiert. Also ganze verzeichnisbäume";cp -r /home/user/ /tmp/;Kopiert alle Dateien und Unterordner von /home/user/ nach /tmp/
+;;"""-v"" steht für ""verbose"" und zeigt alles an was der Befehl cp gerade macht.";cp -ar /home/user/ /tmp/;Kopiert alle Dateien und Unterordner von /home/user/ nach /tmp/ und behält dabei alle Zeitstempel, Dateirechte, Benutzer und Gruppen des Originals (Der Quelle).
+;;;;
+chmod;change modus       Methode 1;"""-f"" unterdrückt Fehlermeldungen (-silent, - quiet)";chmod -v 777 meinedatei.txt;Ändert die Rechte der Datei auf Lesen, Schreiben und Ausführen für Besitzer, Gruppe und Andere im Oktalmodus
+;(Besitzer ändern);"""-R"" Steht für ""rekursiv"". Mit diesem Schalter werden alle Ordner und Unterordner ink. Dateien geändert. Also ganze Verzeichnisbäume.";chmod a+rwx meinedatei.txt;Ändert die Rechte der Datei auf Lesen, Schreiben und Ausführen für Besitzer, Gruppe und Andere im symbolischen Modus
+;;"""v"" Steht für ""verbose"" und Zeigt alles an was der befehl mv gerade macht.";chmod -R 700 /foo/bar;Setzt die Dateirechte rekursiv auf 700 im Ordner /foo/bar, also auf alle Dateien und Ordner die sich in /foo/bar befinden.
+;ugoa                         Methode 2;;;
+;;u  -steht für Besitzer (user);r für lesen;
+;;g - steht für Gruppe (group);w für schreiben;
+;;o - steht für Andere (others);x für ausführen bzs. Bei Verzeichnissen, den Inhalt auflisten;
+;;a - steht für alle (all);*- wenn das entsprechende Recht nicht vorhanden ist;
+;;;;
+;;;chmod u=rw,g=rw,o=r meinedatei.txt;Setzt explizit die Rechte für Besitzer und Gruppe auf lesen und schreiben und anderen dürfen nur lesen
+apt;Advanced Package tool;"""update"" Neueinlesen der Paketlisten";;
+;;"""upgrade"" Installierte Pakete wenn möglich auf eine verbesserte version aktualisieren. ";;
+;;"install ""Paketname"" Installiert das Paket ""Paketname"""; apt install ; installiert ein Program
+;;;;
+ping;Pingt einen entfernten Host;"""-i"" ändert den Zeitintervall zwischen den Ping-Paketen";ping -i 3 google.com;Pingt in einem Intervall von 3 Sekunden
+;;"""-s"" ändert die Ping-Paketgröße";ping -s 80 google.com;Sendet ein 80-Byte-Paket an den angegebenen Host
+;;"""-c"" sendet eine bestimmte anzahl an paketen";ping -c 3 google.com;Sendet 3 Pakete an den host und stoppt dann.
+;;;;
+traceroute;Transportweg von IP-Datenpaketen;"""-V"" ";traceroute -V;zeigt die benutzte Version an und beendet das Programm
+;;"""-w"" ";traceroute -w 6 google.com;ANTWORTZEIT, Setzt die Wartezeit für die Antwort auf ein Testpaket auf ANTWORTZEIT in Sekunden
+;;"""-z"" ";traceroute -z 8 google.com;WARTEZEIT, Setzt die Zeit zwischen zwei Testpaketen auf mindestens WARTEZEIT. Bei WARTEZEIT > 10 ist die Einheit ms, sonst Sekunden.
+;;;;
+login;Startet eine Sitzung auf dem System;"""-p"" behält die umgebungseinstellungen bei";login -p  -h host BENUTZERNAME;
+;;"""-h"" name des entfernt Stehenden rechners für die Anmeldung";login -h HOSTNAME/IP;
+;;"""-f"" keine authentifizierung durchführen, Benutzer ist bereits angemeldet";login -f BENUTZERNAME;
+;;;;
+;;;;
+;;;;
+logout;loggt sich aus ;keine;logout;
+;;;;
+;;;;
+exit;Verläßt das Verzeichnis;Beendet auch die Bash, beendet Remotverbindungen;exit;
+;;;;
+;;;;
+cat;Gibt den Inhalt von Dateien aus;cat datei.txt;;
+;;*-n;;
+;;cat Datei1 Datei2 > Datei 3  zusammenführen von Dateien;;
+;;;;
+echo;gibt übergebenden String als Argument aus;echo Karsten gibt Karsten aus;;
+;;echo ohne Angabe gibt Zeilenumbruch aus;;
+;;echo -n Zeilenumbruch unterdrücken;;
+;;;;
+;;;;
+more;"Wie less, aber ohne die Fähigkeit rückwärts
+zu scrollen
+less = Scrollfähige Anzeige einer Textdatei";;;
+;;;;
+ps;Ausgabe aller laufenden Prozesse (prozess Status);;;
+;;ps - more (mit Leertaste zum weiterblättern);;
+;;;;
+kill;"Beendung eines durch die Prozess -ID gekennzeichneten
+Prozesses";;;
+;;;;
+;;;;
+Imex, Nano sind Konsoleneditoren;;;;
+welcome home : vim online;;;;
+nano – Text editor (nano-editor.org);;;;
+GNU Emacs - GNU Project;;;;
+;;;;
+https://www.gnu.org/software/coreutils/;;;;
+file:///C:/Users/1rick/Desktop/Powershell_Kommandos.pdf;;;;
+https://www.ernstlx.com/linux90bash.html;;;;
+https://wiki.ubuntuusers.de/Shell/Umleitungen/;;;;

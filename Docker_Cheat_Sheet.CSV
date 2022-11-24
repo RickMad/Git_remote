@@ -1,0 +1,90 @@
+;;POWERSHELL CHEAT SHEET;
+;;;
+Kommando;Beschreibung;Ausprägung;Beispiele
+man;"Zeigt die Hilfedatei zu 
+dem Programm an";- k Schlüsselwort: zur Suche von Hilfeseiten mit bestimmten Schlüsselwort;man -k hilfe
+;;-f Thema: Kurzinfo zum gewählten Thema;man -f cp
+;;"-t > ausgabe.ps: Erzeugt eine schön 
+formatiertes Postscript-Dokument des Thema";man cp -t > cp_man.ps
+;;;
+;;;
+cd;Verzeichnis wechseln;;cd /var/www
+;;;cd ..
+;;;cd ../..
+ls;list directory contents;"""-a"" steht für all und zeigt auch dateien die mit einem ""."" Beginnen";ls
+;;"""-h"" steht für human-readable, hier werden die größenangaben in Menschlich lesbarer";ls -la
+;;form dargestellt (z.B. 1k, 234m, 2g, etc;
+;;"""-l"" steht für ""long listing format"" hier wird der inhalt des verzeichnisses mit jeder menge angaben, zeile für zeile";ls -la /var/www
+;;;
+pwd;print working directory;"pwd ""-l"" Symbolischen Link drucken.";
+;;"pwd ""-p"" Den tatsächlichen link drucken";
+;;pwd zeigt das aktuelle Arbeitsverzeichnis;
+;;;
+mkdir;make directorys;"mkdir ""-p"" Steht für ""parents"". Hier können übergeordnete Ordner mit angelegt werden, z.B. ganze Ordnerstrukturen";mkdir MeinOrdner
+;;"mkdir ""-v"" Steht für ""verbose"" und zeigt alles an was der Befehl ""mkdir"" gerade macht.";mkdir MeinOrdner1 MeinOrdner2
+;;;mkdir -p Ordner/{A11,A12}/{AU1,AU2}
+touch;Datei erstellen, Zeitstempel ändern;"""-a"" modifikation des Zugriffszeitstempels der Datei";
+;;"""-c"" (Wenn keine datei vorhanden ist:) Keine Datei erstellen";
+;;"""-d"" Verwendung von Datum oder STRING statt der augenblicklichen zeit.";touch datei.txt
+;;"""-t"" zeitstempel Verwendung von [JJ]MMTTHHMM[.ss] statt der augenblicklichen zeit";touch -t 0912311627 datei.txt
+;;;
+rm;remove file;"""-i"" Steht für interactive. Fragt bei jedem Löschvorgang ob die Datei wirklich gelöscht werden soll, dies muss dann mit der Taste ";rm meinedatei.txt
+;;"""y"" bestätigt werden.";rm -r /tmp
+;;"""-r"" Steht für ""recursive"". Hier werden alle dateien und ordner rekursiv vom angegebenen Pfad gelöscht.";rm -rv /tmp
+;;"""-v"" Steht für ""verbose"" und Zeigt alles an was der Befehl rm gerade macht.";
+;;;
+rmdir;Remove empty directorys;"""-v"" steht für verbose und zeigt alles an was der Befehl rmdir gerade macht.";rmdir /temp/test
+;;;
+mv;move (rename) files;"""-v"" steht für ""verbose"" und zeigt alles an was der Befehl mv gerade macht.";mv /home/user/test.txt /tmp/
+;;;mv test.txt test2.txt
+;;;mv /home/user /tmp/
+cp;copy files and directorys;"""-a"" Steht für ""archive"". Mit diesem Schalter werden Zeitstempel, Besitzer, Gruppen, Dateirechte wie von der Quelle beibehalten";cp /home/user/test.txt /tmp/
+;;"""-r"" steht für ""rekursiv"". Mit diesem Schalter werden alle Ordner und Unterordner inkl. Dateien kopiert. Also ganze verzeichnisbäume";cp -r /home/user/ /tmp/
+;;"""-v"" steht für ""verbose"" und zeigt alles an was der Befehl cp gerade macht.";cp -ar /home/user/ /tmp/
+;;;
+chmod;change modus       Methode 1;"""-f"" unterdrückt Fehlermeldungen (-silent, - quiet)";chmod -v 777 meinedatei.txt
+;(Besitzer ändern);"""-R"" Steht für ""rekursiv"". Mit diesem Schalter werden alle Ordner und Unterordner ink. Dateien geändert. Also ganze Verzeichnisbäume.";chmod a+rwx meinedatei.txt
+;;"""v"" Steht für ""verbose"" und Zeigt alles an was der befehl mv gerade macht.";chmod -R 700 /foo/bar
+;ugoa                         Methode 2;;
+;;u  -steht für Besitzer (user);r für lesen
+;;g - steht für Gruppe (group);w für schreiben
+;;o - steht für Andere (others);x für ausführen bzs. Bei Verzeichnissen, den Inhalt auflisten
+;;a - steht für alle (all);*- wenn das entsprechende Recht nicht vorhanden ist
+;;;
+;;;chmod u=rw,g=rw,o=r meinedatei.txt
+apt;Advanced Package tool;"""update"" Neueinlesen der Paketlisten";
+;;"""upgrade"" Installierte Pakete wenn möglich auf eine verbesserte version aktualisieren. ";
+;;"install ""Paketname"" Installiert das Paket ""Paketname"""; apt install 
+;;;
+ping;Pingt einen entfernten Host;"""-i"" ändert den Zeitintervall zwischen den Ping-Paketen";ping -i 3 google.com
+;;"""-s"" ändert die Ping-Paketgröße";ping -s 80 google.com
+;;"""-c"" sendet eine bestimmte anzahl an paketen";ping -c 3 google.com
+;;;
+traceroute;Transportweg von IP-Datenpaketen;"""-V"" ";traceroute -V
+;;"""-w"" ";traceroute -w 6 google.com
+;;"""-z"" ";traceroute -z 8 google.com
+;;;
+login;Startet eine Sitzung auf dem System;"""-p"" behält die umgebungseinstellungen bei";login -p  -h host BENUTZERNAME
+;;"""-h"" name des entfernt Stehenden rechners für die Anmeldung";login -h HOSTNAME/IP
+;;"""-f"" keine authentifizierung durchführen, Benutzer ist bereits angemeldet";login -f BENUTZERNAME
+;;;
+;;;
+;;;
+logout;loggt sich aus ;keine;logout
+;;;
+;;;
+exit;Verläßt das Verzeichnis;keine;exit
+;;;
+;;;
+;;;
+;;;
+;;;
+;;;
+;;;
+;;;
+;;;
+;;;
+;;;
+;;;
+https://www.gnu.org/software/coreutils/;;;
+file:///C:/Users/1rick/Desktop/Powershell_Kommandos.pdf;;;
